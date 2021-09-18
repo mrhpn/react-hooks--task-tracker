@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from "./components/Header";
+import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
 
 function App() {
@@ -23,6 +24,13 @@ function App() {
     ]
   );
 
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newTask = { id, ...task };
+
+    setTasks([newTask, ...tasks]);
+  }
+
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   }
@@ -39,12 +47,7 @@ function App() {
     <div className="max-w-sm mx-auto my-3">
       <div className="bg-indigo-50 rounded-xl">
           <Header />
-          <form>
-            <div class="mx-3 mb-4">
-              <input class="rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="taskname" type="text" placeholder="Task" />
-              <button className="bg-indigo-200 my-3 w-full rounded-lg text-indigo-600 px-3 py-1 text-sm">Create</button>
-            </div>
-          </form>
+          <AddTask onAdd={ addTask } />
       </div>
       <div className="bg-indigo-50 rounded-xl mb-3 px-3 pt-1 pb-3">
         { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onDoubleClick={toogleReminder} /> : 'No tasks yet!'}
