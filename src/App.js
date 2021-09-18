@@ -1,29 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from "./components/Header";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
 
 function App() {
   const [addTaskForm, setAddTaskForm] = useState(false);
-  const [tasks, setTasks] = useState(
-    [
-        {
-            id: 1,
-            text: 'Kanji Homework',
-            reminder: false
-        },
-        {
-            id: 2,
-            text: 'Vocabulary Homework',
-            reminder: false
-        },
-        {
-            id: 3,
-            text: 'Grammar Homework',
-            reminder: false
-        }
-    ]
-  );
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasks = await fetchTasks();
+      setTasks(tasks);
+    }
+
+    getTasks();
+  }, []);
+
+  // fetch tasks
+  const fetchTasks = async () => {
+    const res = await fetch("http://localhost:5000/tasks");
+    return await res.json();
+  };
 
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1;
