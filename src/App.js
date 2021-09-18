@@ -4,6 +4,7 @@ import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
 
 function App() {
+  const [addTaskForm, setAddTaskForm] = useState(false);
   const [tasks, setTasks] = useState(
     [
         {
@@ -46,8 +47,8 @@ function App() {
   return (
     <div className="max-w-sm mx-auto my-3">
       <div className="bg-indigo-50 rounded-xl">
-          <Header />
-          <AddTask onAdd={ addTask } />
+          <Header addTaskFormVisibility={addTaskForm} onAdd={ () => setAddTaskForm(!addTaskForm) } />
+          { addTaskForm && <AddTask onAdd={ addTask } /> }
       </div>
       <div className="bg-indigo-50 rounded-xl mb-3 px-3 pt-1 pb-3">
         { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onDoubleClick={toogleReminder} /> : 'No tasks yet!'}

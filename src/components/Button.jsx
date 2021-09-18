@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ classes, text, onClick }) => {
+const Button = ({ bgColor, classes, text, onClick }) => {
     return (
-        <button onClick={onClick} className={classes} >{text}</button>
+        <button onClick={onClick} className={classes + ' ' + bgColor} >{text}</button>
     );
 }
 
 Button.defaultProps = {
-    classes: "bg-indigo-600 rounded-xl text-white px-2 shadow-lg hover:shadow-none text-xs"
+    bgColor: "bg-indigo-600",
+    classes: "rounded-full text-white px-2 shadow-lg hover:shadow-none text-xs"
 }
 
 Button.propTypes = {
