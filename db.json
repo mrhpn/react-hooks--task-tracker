@@ -1,11 +1,6 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "Cinema at 2:40",
-      "reminder": false
-    },
-    {
       "id": 2,
       "text": "Dinner at 7:00",
       "reminder": false
@@ -14,6 +9,16 @@
       "id": 3,
       "text": "Metting with friends",
       "reminder": false
+    },
+    {
+      "text": "Date at 4:00",
+      "reminder": false,
+      "id": 4
+    },
+    {
+      "text": "To buy banana",
+      "reminder": false,
+      "id": 5
     }
   ]
 }
