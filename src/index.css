@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap'); */
+@font-face {
+    font-family: SFSB;
+    src: url('./‌assets/fonts/SFUIDisplay-Semibold.otf');
+}
+
+@font-face {
+    font-family: SFR;
+    src: url('./‌assets/fonts/SFUIDisplay-Regular.otf');
+}
+
+@font-face {
+    font-family: SFL;
+    src: url('./‌assets/fonts/SFUIDisplay-Light.ttf');
+}
+
+body {
+    font-family: SFSB;
+}

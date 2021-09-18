@@ -45,16 +45,18 @@ function App() {
   }
 
   return (
-    <div className="max-w-sm mx-auto my-3">
-      <div className="bg-indigo-50 rounded-xl">
-          <Header addTaskFormVisibility={addTaskForm} onAdd={ () => setAddTaskForm(!addTaskForm) } />
-          { addTaskForm && <AddTask onAdd={ addTask } /> }
-      </div>
-      <div className="bg-indigo-50 rounded-xl mb-3 px-3 pt-1 pb-3">
-        { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onDoubleClick={toogleReminder} /> : 'No tasks yet!'}
-      </div>
-      <div className="mb-3 px-3">
-        <a href="#" className="underline flex justify-center text-xs align-middle">About</a>
+    <div className="mx-3">
+      <div className="max-w-sm mx-auto my-3">
+        <div className="bg-indigo-50 rounded">
+            <Header addTaskFormVisibility={addTaskForm} onAdd={ () => setAddTaskForm(!addTaskForm) } />
+            { addTaskForm && <AddTask onAdd={ addTask } /> }
+        </div>
+        <div className="bg-indigo-50 rounded mb-3 px-3 pt-2 pb-3">
+          { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onDoubleClick={toogleReminder} /> : 'No tasks yet!'}
+        </div>
+        <div className="mb-3 px-3">
+          <a href="#" className="underline flex justify-center text-xs align-middle">About</a>
+        </div>
       </div>
     </div>
   );
