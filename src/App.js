@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from "./components/Header";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
+import About from "./components/About";
 
 function App() {
   const [addTaskForm, setAddTaskForm] = useState(false);
@@ -68,20 +71,29 @@ function App() {
   }
 
   return (
-    <div className="mx-3">
-      <div className="max-w-sm mx-auto my-3">
-        <div className="bg-indigo-50 rounded">
-            <Header addTaskFormVisibility={addTaskForm} onAdd={ () => setAddTaskForm(!addTaskForm) } />
-            { addTaskForm && <AddTask onAdd={ addTask } /> }
-        </div>
-        <div className="bg-indigo-50 rounded mb-3 px-3 pt-2 pb-3">
-          { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onDoubleClick={toogleReminder} /> : 'No tasks yet!'}
-        </div>
-        <div className="mb-3 px-3">
-          <a href="#" className="underline flex justify-center text-xs align-middle">About</a>
+    <Router>
+      <div className="mx-3">
+        <div className="max-w-sm mx-auto my-3">
+          <div className="bg-indigo-50 rounded">
+              <Header addTaskFormVisibility={addTaskForm} onAdd={ () => setAddTaskForm(!addTaskForm) } />
+              { addTaskForm && <AddTask onAdd={ addTask } /> }
+          </div>
+
+          <Route path="/" exact render={(props) => (
+            <>
+              <div className="bg-indigo-50 rounded mb-3 px-3 pt-2 pb-3">
+                { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onDoubleClick={toogleReminder} /> : 'No tasks yet!'}
+              </div>
+            </>
+          )} />
+          <Route path="/about" component={About} />
+          
+          <div className="mb-3 px-3">
+            <Link to="/about" className="underline flex justify-center text-xs align-middle">About</Link>
+          </div>
         </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
