@@ -8,20 +8,31 @@ function App() {
         {
             id: 1,
             text: 'Kanji Homework',
+            reminder: false
         },
         {
             id: 2,
             text: 'Vocabulary Homework',
+            reminder: false
         },
         {
             id: 3,
             text: 'Grammar Homework',
+            reminder: false
         }
     ]
   );
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
+  }
+
+  const toogleReminder = (id) => {
+    setTasks(
+      tasks.map((task) => {
+        return task.id === id ? { ...task, reminder: !task.reminder } : task
+      })
+    );
   }
 
   return (
@@ -36,7 +47,7 @@ function App() {
           </form>
       </div>
       <div className="bg-indigo-50 rounded-xl mb-3 px-3 pt-1 pb-3">
-        <Tasks tasks={tasks} onDelete={deleteTask} />
+        { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onDoubleClick={toogleReminder} /> : 'No tasks yet!'}
       </div>
       <div className="mb-3 px-3">
         <a href="#" className="underline flex justify-center text-xs align-middle">About</a>
