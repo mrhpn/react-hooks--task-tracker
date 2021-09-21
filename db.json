@@ -1,13 +1,8 @@
 {
   "tasks": [
     {
-      "id": 3,
-      "text": "Metting with friends",
-      "reminder": true
-    },
-    {
       "text": "Date at 4:00",
-      "reminder": true,
+      "reminder": false,
       "id": 4
     },
     {
